@@ -12,17 +12,28 @@ export default function Chat({ session }) {
     setInput("")
 
     const aiReply = await askAI(userMsg)
-    setMessages([...messages, { sender: "user", text: userMsg }, { sender: "ai", text: aiReply }])
+    setMessages([
+      ...messages,
+      { sender: "user", text: userMsg },
+      { sender: "ai", text: aiReply }
+    ])
   }
 
   return (
     <div className="max-w-2xl mx-auto">
       <div className="bg-white p-4 rounded shadow h-[400px] overflow-y-auto space-y-2">
         {messages.map((msg, i) => (
-          <div key={i} className={\`p-2 rounded \${msg.sender === "user" ? "bg-blue-100 text-right" : "bg-gray-200 text-left"}\`}>
+          <div
+            key={i}
+            className={`p-2 rounded ${
+              msg.sender === "user"
+                ? "bg-blue-100 text-right"
+                : "bg-gray-200 text-left"
+            }`}
+          >
             {msg.text}
           </div>
-        )))
+        ))}
       </div>
       <div className="flex mt-2">
         <input
@@ -31,9 +42,13 @@ export default function Chat({ session }) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button className="bg-blue-500 text-white p-2 rounded-r" onClick={sendMessage}>Kirim</button>
+        <button
+          className="bg-blue-500 text-white p-2 rounded-r"
+          onClick={sendMessage}
+        >
+          Kirim
+        </button>
       </div>
     </div>
   )
 }
-
