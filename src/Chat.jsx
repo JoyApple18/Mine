@@ -22,7 +22,7 @@ export default function Chat({ session }) {
           <div key={i} className={\`p-2 rounded \${msg.sender === "user" ? "bg-blue-100 text-right" : "bg-gray-200 text-left"}\`}>
             {msg.text}
           </div>
-        ))}
+        )))
       </div>
       <div className="flex mt-2">
         <input
@@ -36,3 +36,4 @@ export default function Chat({ session }) {
     </div>
   )
 }
+
